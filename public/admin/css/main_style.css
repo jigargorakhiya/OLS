@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+margin:0px;
+padding:0px;
+background-color:#f5f5f5;
+}
+#header {
+background:url(../images/header_images/header.jpg) repeat-x;
+width:100%;
+height:109px;
+margin:0px;
+display:table;
+}
+#main_menu {
+background:url(../images/header_images/main_menu.jpg) repeat-x;
+width:100%;
+height:39px;
+margin:0px;
+}
+
+#emp {
+width:100%;
+height:39px;
+margin:0px;
+}
+
+#main_menu_content {
+background:url(../images/header_images/main_menu.jpg);
+width:99%;
+height:20px;
+margin-left:10px;
+margin-right:10%;
+}
+#logo {
+width:322px;
+height:53px;
+float:left;
+margin:23px 0px 0px 20px;
+}
+#content {
+width:100%;
+height:auto;
+display:table;
+}
+#logout {
+width:400px;
+height:18px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#181818;
+float:right;
+margin:89px 0px 0px 0px;
+}
+#logout a {
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+font-weight:bold;
+color:#ff6b00;
+text-decoration:none;
+}
+#logout a:hover {
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+font-weight:bold;
+color:#181818;
+text-decoration:underline;
+}
+
+
+
+#footer {
+width:100%;
+height:50px;
+background:url(../images/header_images/footer_bg.jpg) repeat-x;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#181818;
+text-align:center;
+padding:18px 0px 0px 0px;
+position:fixed;
+bottom:0;
+left:0;
+}
+
+ 
+
+
+#footer a {
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#181818;
+}
+#footer a:hover {
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#ff6b00;
+}

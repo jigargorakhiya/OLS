@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/main_style.css" rel="stylesheet" type="text/css" >
+<link href="../css/styles.css" rel="stylesheet" type="text/css" >
+
+</head>
+
+<body>
+
+<div id="header">
+<div id="logo"><img src="../images/header_images/logo.jpg" /></div>
+<div id="logout">Welcomefadfd<?php echo $this->email;?> <b>|</b> <a href="<?php echo $this->url(array('controller'=>'index','action'=>'logout'))?>">Logout</a></div>
+</div>
+
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('controller'=>'leave','action'=>'home'))?>">Admin</a></li>
+				<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewemp'))?>">Employee</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewemp'))?>">View Employees</a></li>
+						<li><a href="<?php echo $this->url(array('controller'=>'leave','action'=>'employee'))?>">Add Employees</a></li>
+					</ul>
+				</li>
+                 <li><a class="" href="#">Leave</a>
+                 <ul>
+						<li><a class="" href="#">Sub Menu 1</a>
+								<ul><li><a class="" href="#">Sub Menu 1</a></li>
+									<li><a class="" href="#">Sub Menu 1</a></li>
+									<li><a class="" href="#">Sub Menu 1</a></li>
+								</ul>
+						</li>
+							
+					<li><a class="" href="#">Sub Menu 2</a></li>
+						<li><a class="" href="#">Sub Menu 3</a></li>
+                 
+                 </li>
+				 </ul>
+			    <li><a class="" href="services.html">Time</a></li>
+				<li><a class="" href="#">Benefits</a></li>
+				<li><a class="" href="#">Recruitment</a></li>
+				<li><a class="no_hover " href="#">Performance</a></li>
+				<li><a  href="contact.html">Help</a></li>
+                
+               
+			</ul></div></div>  
+</body>
+</html>
