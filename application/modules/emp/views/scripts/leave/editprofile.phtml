@@ -1,0 +1,288 @@
+<html>
+
+<head>
+		<title>Edit Profile</title>
+		<link rel="stylesheet" href="../css/layout.css" type="text/css">
+		<link href="../css/main_style.css" rel="stylesheet" type="text/css" >
+		<link href="../css/styles.css" rel="stylesheet" type="text/css" >
+		
+<script type="text/javascript">
+
+  function checkForm(form)
+{
+	var email=document.getElementById('email');
+	var phoneno =document.getElementById('phoneno');
+	var pwd =document.getElementById('pwd');	
+	
+    if(form.name.value == "") {
+      alert("Error: Name cannot be blank!");
+      form.name.focus();
+      return false;
+    }
+    re = /^[a-zA-Z]+$/;
+    if(!re.test(form.name.value)) {
+      alert("Error: FirstName must contain only letters");
+      form.name.focus();
+      return false;
+    }
+		if(form.phoneno.value=="")
+		{
+			alert("Phone Number can not be blank");
+			return false;
+		}
+		 re = /^[0-9]+$/;
+		if(!re.test(form.phoneno.value))
+		{
+			alert("Phone Numbers contain Numebers Only");
+			return false;
+		}
+		
+		if( (form.phoneno.value.length != 10) )
+		{
+			alert("Phone Number must be in 10 digit");
+			form.phoneno.focus();
+			return false;
+		}
+
+		re= /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+		if(!email.value.match(re))
+		{
+			alert("Please enter a valid E-mail Address");
+			email.focus();
+			return false;
+		}
+		
+	if(form.add.value == "") {
+      alert("Error: Address cannot be blank!");
+      form.add.focus();
+      return false;
+    }
+	
+	if(form.qf.value == "") {
+      alert("Error: Please Enter Qualification!");
+      form.qf.focus();
+      return false;
+    }
+	if(form.pwd.value =="")
+	{
+		alert("Error: Password cannot be blank!");
+      form.pwd.focus();
+      return false;
+	}
+	
+	if ( (form.pwd.value.length >=6 && form.pwd.value.length <=8 ) )
+		{
+			return true;
+		}
+		else
+		{
+			alert("Password must be between 6 and 8 Characters");
+			form.pwd.focus();
+			return false;
+		}
+}
+
+		</script>
+</head>
+<body>
+<div id="container">
+		<!-- Header -->
+		
+  <div id="header">
+				<!-- Top -->
+    
+				<!-- End of Top-->
+<!-- The navigation bar -->
+
+
+		<!-- End of Header -->
+		<!-- Background wrapper -->
+    	<div id="bgwrap">
+     		<!-- Main Content -->
+			<div id="content">
+				<div id="main">				 
+				  <div class="pad20">
+<?php
+foreach($this->resultviews as $resultRow)
+				{		
+				
+				 $id=$resultRow['user_id'];
+				 $name=$resultRow['name'];
+				 $bdate=$resultRow['birthdate'];
+				 $phoneno=$resultRow['phoneno'];
+				 $add=$resultRow['address'];
+				 $qf=$resultRow['qualification'];
+				 $jod=$resultRow['joiningdate'];
+				 $end=$resultRow['endingdate'];
+				 $gn=$resultRow['gender'];
+				 $ms=$resultRow['maritalstatus'];
+				 $desg=$resultRow['designation'];
+				 $email=$resultRow['email'];
+				 $pwd=$resultRow['password'];
+				 $pan=$resultRow['pancardno'];
+				 $status=$resultRow['status'];
+
+				
+?>
+<body>		
+					
+<div id="container">
+
+		
+
+			<!-- Header -->
+
+  <div id="header">
+
+				
+
+				<!-- Top -->
+
+    
+
+				<!-- End of Top-->
+
+			
+
+<!-- The navigation bar -->
+
+			
+
+		<!-- End of Header -->
+
+			
+						
+		<!-- Background wrapper -->
+					
+		<div id="bgwrap">
+
+		
+
+			<!-- Main Content -->
+
+			<div id="content">
+						
+                 <div id="main">				 
+						
+				  <div class="pad20">			
+					
+					
+				  <form name="editProfile" action="<?php echo $this->url(array('controller'=>'leave','action'=>'updateprofile'))?>" method="post" onSubmit='return checkForm(this)'>    
+
+				  <fieldset>
+					<legend>Edit Profile</legend>           
+						<table>
+							<tr>
+								<td><p><label>Name:</label></td>
+								<td><input type="text" id="name" name="name"  value="<?php echo $name;?>" class=""  /></p></td>
+								
+								<td><p><label>Phone No:</label></td>
+								<td><input type="text" name="phoneno"  id='phoneno' value="<?php echo $phoneno;?>" class=""  /></p></td>
+									
+								<td><p><label>E-Mail Id:</label></td>
+								<td><input type="text" name="email"  id='email' value="<?php echo $email;?>" class=""  /></p></td>																	
+							</tr>
+							
+							<tr>
+								<td><p><label>Address:</label></td>
+								<td><input type="text" id="" name="add"  value="<?php echo $add;?>" class=""  /></p></td>
+								
+								<td><p><label>Qualification:</label></td>
+								<td><input type="text"  name="qf"  value="<?php echo $qf;?>" class=""  /></p></td>
+								
+								<td><p><label>Password:</label></td>
+								<td><input type="password" id='pwd' name="pwd"  value="<?php echo $pwd;?>" class=""  /></p></td>																
+							</tr>
+							<tr>
+							<td><p><label>Birthdate:</label></td>
+								<td>
+									<Select name="bday">
+									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
+									</select>
+									/
+									<Select name="bmonth">
+									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
+									</select>
+									/
+									<select name="byear">
+									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
+									 </select>						
+								</td>
+								<td><label>Joining Date:</label></td>
+								    <td>
+									<Select name="jday">
+									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
+									</select>
+									/
+									<Select name="jmonth">
+									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
+									</select>
+									/
+									<select name="jyear">
+									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
+									 </select>						
+								</td>
+								<td><label>Ending Date:</label></td>
+								    <td>
+									<Select name="eday">
+									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
+									</select>
+									/
+									<Select name="emonth">
+									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
+									</select>
+									/
+									<select name="eyear">
+									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
+									 </select>						
+								</td> 
+							</tr>	
+							
+							
+							<tr>
+								<td><p><label>Gender:</label></td>
+								<td><select name="gender">
+									<option value="0">Male</option>
+									<option value="1">Female</option>
+								</td>					
+								
+									
+								<td><p><label>Marital Staus:</label></td>
+								<td><select name="ms">
+									<option value="0">Yes</option>
+									<option value="1">No</option>
+								</td>
+								
+								<td><p><label>Designation:</label></td>
+								<td><select name="desig">
+									<option value="0">Employee</option>
+									<option value="1">Manager</option>
+								</td>
+							
+							</tr>
+							
+							<tr>
+								<td><p><label>Status:</label></td>
+								<td><select name="status">
+									<option value="0">Active</option>
+									<option value="1">Deactive</option>
+								</td>
+								
+								<td><label>Pancard No:</label>
+								<td><input type="text" name="pancard" value="<?php echo $pan;?>"></td>
+								
+							</tr>							
+						<tr>
+								<td><input type="submit" value="Submit" class="button" /></td>
+								
+						</tr>
+						</table>
+						
+            </fieldset>
+			
+		
+        <?php }?>
+		  </div></div></div></div></div></div>
+
+</body>
+</html>

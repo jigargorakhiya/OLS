@@ -6,6 +6,7 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 	
 	public function checkUser($un,$pwd)
 	{
+		
 		$res=$this->fetchRow(array('email="'.$un.'"','password="'.$pwd.'"'));
 		
 		if($pwd==$res['password'])		
@@ -20,16 +21,23 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 		return $res;
 	}
 	
-	public function insertData($fn,$ln,$email,$gn)
+	public function insertData($name,$bdate,$phoneno,$add,$qf,$jdate,$edate,$gn,$ms,$desg,$email,$pwd,$pan,$status)
 	{
 		$data = array(
-		'firstname'=> $fn,
-		'lastname'=> $ln,
-        'gender'=> $gn,
+		'name'=> $name,
+		'birthdate'=> $bdate,
+        'phoneno'=> $phoneno,
+		'address'=> $add,
+		'qualification'=> $qf,
+		'joiningdate'=> $jdate,
+		'endingdate'=> $edate,
+		'gender'=> $gn,
+		'maritalstatus'=> $ms,
+        'designation'=> $desg,
 		'email'=> $email,
-		'phno'=> $phno,
-		'fax'=> $fax,
-		'user_id'=>$user
+		'password'=> $pwd,
+		'pancardno'=>$pan,
+		'status'=> $status
 		);
 		try{
 		$result=$this->insert($data);
@@ -52,5 +60,56 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 		}
 		
 		
+	}
+	public function empClass($empid)
+	{
+			$session = new Zend_Session_Namespace(); 
+		if (isset($session->id)) 
+		{
+			$query = $this->select()
+					->where('user_id='.$empid);
+			$resultRows = $this->fetchAll($query);
+			return $resultRows;
+		}
+	}
+	
+	public function editEmp($empid)
+	{
+			$session = new Zend_Session_Namespace(); 
+		if (isset($session->id)) 
+		{
+			$query = $this->select()
+					->where('user_id='.$empid);
+			$resultRows = $this->fetchAll($query);
+			return $resultRows;
+		}
+	}
+	
+	public function updateData($eid,$name,$bdate,$phoneno,$add,$qf,$jdate,$edate,$gn,$ms,$desg,$email,$pwd,$pan,$status)
+	{
+		$data = array(
+		'name'=> $name,
+		'birthdate'=> $bdate,
+        'phoneno'=> $phoneno,
+		'address'=> $add,
+		'qualification'=> $qf,
+		'joiningdate'=> $jdate,
+		'endingdate'=> $edate,
+		'gender'=> $gn,
+		'maritalstatus'=> $ms,
+        'designation'=> $desg,
+		'email'=> $email,
+		'password'=> $pwd,
+		'pancardno'=>$pan,
+		'status'=> $status
+		);
+		
+		try{
+		$result=$this->update($data,'user_id='.(int)$eid);
+	  }
+	 
+	 catch(exception $e){
+		echo "<br/>".$e;exit;
+	 }	 
 	}
 }

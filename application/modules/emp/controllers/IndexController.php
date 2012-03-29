@@ -1,6 +1,7 @@
 <?php
-include_once(APPLICATION_PATH.'/models/DbTable/Login.php');
-class IndexController extends Zend_Controller_Action
+include_once(APPLICATION_PATH.'/modules/admin/models/DbTable/Login.php');
+
+class Emp_IndexController extends Zend_Controller_Action
 {
 
     public function init()
@@ -31,10 +32,12 @@ class IndexController extends Zend_Controller_Action
 				$uid=new Model_DbTable_Login();
 				$user=$uid->getSessionDetails($un,$pwd);
 				$id=$user['user_id'];
-				$un=$user['username'];
+				$un=$user['email'];
+				$name=$user['name'];
 				
+							
 				
-				require_once('Zend/Session.php');
+				/*require_once('Zend/Session.php');
  
 				$remember = isset($_POST['remember']) && $_POST['remember'];
 				$seconds  = 60 * 60 * 24 * 7; // 7 days
@@ -45,12 +48,13 @@ class IndexController extends Zend_Controller_Action
 				else 
 				{
 				Zend_Session::ForgetMe();
-				}
+				}*/
  
 				
 				$session=new Zend_Session_NameSpace();
 				$session->id=$id;
-				$session->username=$un;
+				$session->email=$un;
+				$session->name=$name;
 							
 				
 				$this->_helper->redirector('home','leave');			

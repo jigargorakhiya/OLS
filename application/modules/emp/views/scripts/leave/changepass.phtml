@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+
+		<!-- Meta -->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+		<!-- End of Meta -->
+
+		
+
+		<!-- Page title -->
+
+		<title>Change Password</title>
+		<!-- End of Page title -->
+
+		
+
+		<!-- Libraries -->
+
+		<link type="text/css" href="css/layout.css" rel="stylesheet" />	
+
+		
+
+		<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+
+		<script type="text/javascript" src="js/easyTooltip.js"></script>
+
+		<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+
+		<script type="text/javascript" src="js/hoverIntent.js"></script>
+
+		<script type="text/javascript" src="js/superfish.js"></script>
+
+		<script type="text/javascript" src="js/custom.js"></script>
+
+		<!-- End of Libraries -->	
+
+	</head>
+
+<body>
+
+		<!-- Container -->
+
+<div id="container">
+
+		
+
+			<!-- Header -->
+
+  <div id="header">
+
+				
+
+				<!-- Top -->
+
+    
+
+				<!-- End of Top-->
+
+			
+
+<!-- The navigation bar -->
+
+			
+
+		<!-- End of Header -->
+
+			
+
+		<!-- Background wrapper -->
+
+		<div id="bgwrap">
+
+		
+
+			<!-- Main Content -->
+
+			<div id="content">
+
+				<div id="main">				 
+
+				  <div class="pad20">
+
+                  
+
+                  
+
+                  <?php
+
+if(isset($_POST['SBMT']))
+
+{   
+
+    $p1=$_POST['pass'];
+
+	$p2=$_POST['cpass'];
+
+	if($p1 !== $p2)
+
+	{
+
+		echo "<script type='text/javascript'>alert ('New Password not match Please try again.');
+				document.location.href=<?php echo($this->url(array('controller'=>'leave','action'=>'changepass'),null,true)?></script>";
+
+
+	}
+
+	//include("../classhotel.php");
+
+	else
+
+	{
+
+	include("class_image.php");
+
+	$h=new hotel();
+
+	$old_pass = $h->get_option("admin_password");
+
+	if($old_pass==$_POST['old_pass'])
+
+	{
+
+			$h->set_option("admin_password",$_POST['pass']);
+
+			echo "<script type='text/javascript'>document.location.href='admin_chpass.php?status=update';</script>";
+
+	}
+
+	else
+
+	{
+
+		header("Location:admin_chpass.php?error=89");	
+
+	}
+
+	}
+
+}
+
+?>
+
+<?php
+
+		  if($_GET['status']=="update")
+
+		  {
+
+			  ?>
+
+              <div align="center">
+
+               <div class="message success close" style="width:500px;">
+
+							<h2>Congratulations!</h2>
+
+							<p>Password Updated</p>
+
+						</div>
+
+              </div>
+
+              <?php
+
+		  }
+
+		  ?>
+
+<form  action="<?php echo $this->url(array('controller'=>'leave','action'=>'changepasspost'))?>" method="post">
+
+          
+
+          <fieldset>
+
+          <legend>Change Password</legend>
+
+          
+
+                    <p><label for="currency_code">Old Password :</label>
+
+                       <input class="sf" type="password" size="15" name="old_pass" id="old_pass" /></p>
+
+                    <p><label for="Currency_symbol">New Password :</label>
+
+                      <input class="sf" type="password" size="15" maxlength="12" name="pass" id="pass"></p>
+
+                   
+
+                        <p><label for="shipping_charges">Confirm Password :</label>
+
+                             <input class="sf" type="password" size="15" maxlength="12" name="cpass" id="cpass"></p>
+
+                   
+
+                     <p>
+
+                 
+
+                    <input type="submit" name="SBMT" value="Submit" class="button" style="border:0px;" onclick="return validfrm();"/>
+
+                     </p>
+
+                                      
+
+                </fieldset>
+
+          </form>
+
+                  <?php if(isset($_GET['error']))
+
+{
+
+ ?>
+
+  <div class="bodytext"><center> <font color="red"><?php echo $this->oldpass;?></font> </center> </div>
+
+ <?php
+
+}?>
+
+
+
+					
+
+                    
+
+                  </div></div></div>
+
+			<!-- End of Main Content -->
+
+				
+
+			<!-- Sidebar -->
+
+			<?php include("sidebar.php");?>
+
+			<!-- End of Sidebar -->
+
+				
+
+	    </div>
+
+		<!-- End of bgwrap -->
+
+	  </div>
+
+	<!-- End of Container -->
+
+		
+
+	<!-- Footer -->
+
+	<?php include("admin_footer.php");?>
+
+	<!-- End of Footer -->
+
+
+
+
+
+</body>
+
+</html>

@@ -1,17 +1,17 @@
 <html>
 <head>
-	<title>Mind Zone HR Admin</title>
+	<title>Mind Zone Employee</title>
 	<link rel="stylesheet" href="../css/core.css" type="text/css">
 	<link rel="stylesheet" href="../css/skin_clean.css" type="text/css">
 	<script type="text/javascript" src="js/easyTooltip.js"></script>
 </head>
 <body>
-
+		
 		<div id="content">
 
 			<div id="main">
 
-				  <h1>Welcome, <span>Mind Zone Admin</span>!</h1>
+				  <h1>Welcome, <span>Mind Zone Employee</span>!</h1>
 
 				  <p>What would you like to do today?</p>
 
@@ -49,11 +49,11 @@
 
 						  <li>
 
-							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'employee'))?>" title="Manage employees and accounts" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewprofile'))?>" title="Manage employees profile" class="tooltip">
 
 								  <img src="../images/assets_images/icons/16_48x48.png" alt="" />
 
-								  <span>Employees Details</span>
+								  <span>View Profile</span>
 
 							  </a>
 
@@ -90,7 +90,7 @@
 
                           <li>
 
-							  <a href="admin_chpass.php" title="Change Your Password" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'changepass'))?>" title="Change Your Password" class="tooltip">
 
 								  <img src="../images/assets_images/icons/info_48.png" alt="" />
 

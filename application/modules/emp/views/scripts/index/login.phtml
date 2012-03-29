@@ -49,7 +49,7 @@
 						<form action="<?php echo $this->url(array('controller'=>'index','action'=>'loginpost'))?>" method="post" onSubmit='' >
 							<table class="activity" style="background-color:;">
 								<tr>
-									<td class="labels">Usersdfdsfdfasfasfdname</td><td width="169"><input type="text" name="user" id='user' class="usertext" size="15" value="" /></td>
+									<td class="labels">Username</td><td width="169"><input type="text" name="user" id='user' class="usertext" size="15" value="" /></td>
 							  </tr>
 								<tr>
 									<td class="labels">Password</td><td><input type="password" name="pass" id='pass' class="usertext" size="15" value="" /></td>
@@ -59,7 +59,7 @@
 									<td width="93"><div style="font-size:10px;"><a href="<?php echo $this->url(array('controller'=>'index','action'=>'forgot'))?>" class="a">Forgot password</a></div></td>
 					  <td align="right">
 										<input class="login_button" type="submit" style="" value="" /> </td>
-										<font color="red"><?php echo $this->fail;?>
+										<font color="red"><?php echo $this->fail;?></font>
 								</tr>
 							</table>
 							<br><br><br>							<div style="color:#747474; font-size:12px;"><input type="checkbox" name="doRememberUsername"> Remember my username</div>

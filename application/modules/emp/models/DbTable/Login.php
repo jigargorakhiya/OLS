@@ -6,7 +6,8 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 	
 	public function checkUser($un,$pwd)
 	{
-		$res=$this->fetchRow(array('username="'.$un.'"','password="'.$pwd.'"'));
+		
+		$res=$this->fetchRow(array('email="'.$un.'"','password="'.$pwd.'"'));
 		
 		if($pwd==$res['password'])		
 			return true;
@@ -16,41 +17,109 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 	
 	public function getSessionDetails($un,$pwd)
 	{
-		$res=$this->fetchRow(array('username="'.$un.'"','password="'.$pwd.'"'));
+		$res=$this->fetchRow(array('email="'.$un.'"','password="'.$pwd.'"'));
 		return $res;
 	}
 	
-	public function insertData($fn,$ln,$email,$gn)
-	{
-		$data = array(
-		'firstname'=> $fn,
-		'lastname'=> $ln,
-        'gender'=> $gn,
-		'email'=> $email,
-		'phno'=> $phno,
-		'fax'=> $fax,
-		'user_id'=>$user
-		);
-		try{
-		$result=$this->insert($data);
-	  }
-	 catch(exception $e){
-		echo "<br/>".$e;exit;
-	 }	 
-	}
 	
 	public function viewEmp()
 	{	
+	
 		$session = new Zend_Session_Namespace(); 
 		if (isset($session->id)) 
-		{
+		{	
 			$user = $session->id;
 			$query = $this->select()
-					->where('user_id='.$user);
+							->where('user_id='.$user);
 			$resultRows = $this->fetchAll($query);
 			return $resultRows;
 		}
 		
 		
+	}
+	
+	public function editProfile()
+	{
+		$session = new Zend_Session_Namespace(); 
+		if (isset($session->id)) 
+		{	
+			$user = $session->id;
+			$query = $this->select()
+							->where('user_id='.$user);
+			$resultRows = $this->fetchAll($query);
+			return $resultRows;
+		}
+	}
+	
+	public function updateData($name,$bdate,$phoneno,$add,$qf,$jdate,$edate,$gn,$ms,$desg,$email,$pwd,$pan,$status)
+	{
+		$session=new Zend_Session_Namespace();
+		if(isset($session->id))
+		{
+			$id=$session->id;
+		
+		$data = array(
+		'name'=> $name,
+		'birthdate'=> $bdate,
+        'phoneno'=> $phoneno,
+		'address'=> $add,
+		'qualification'=> $qf,
+		'joiningdate'=> $jdate,
+		'endingdate'=> $edate,
+		'gender'=> $gn,
+		'maritalstatus'=> $ms,
+        'designation'=> $desg,
+		'email'=> $email,
+		'password'=> $pwd,
+		'pancardno'=>$pan,
+		'status'=> $status
+		);
+		
+		try{
+		
+		$result=$this->update($data,'user_id='.(int)$id);
+	  }
+	 
+		catch(exception $e){
+			echo "<br/>".$e;exit;
+			}	 
+		}
+	}
+	
+	public function changePassword($op)
+	{
+		$session=new Zend_Session_Namespace();
+		
+		if(isset($session->id))
+		{
+			$id= $session->id;
+			
+			//$query= $this->select()
+						//->where('user_id='.(int)$id);
+			
+			//$result=$this->fetchAll($query);
+			
+			$result=$this->fetchRow('user_id="'.(int)$id.'" ');
+			
+			$pass=$result['password'];
+		
+			
+			if($op==$pass)	{
+			
+			 $data= array('password'=>$pass);
+					try{
+					
+					$result=$this->update($data,'user_id='.(int)$id);
+				}
+				
+				catch (exception $e) {
+					echo "<br/>".$e;exit;
+				}
+				
+			}
+				
+			
+			
+		}
 	}
 }

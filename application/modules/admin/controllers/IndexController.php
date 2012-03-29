@@ -32,9 +32,11 @@ class Admin_IndexController extends Zend_Controller_Action
 				$user=$uid->getSessionDetails($un,$pwd);
 				$id=$user['user_id'];
 				$un=$user['email'];
+				$name=$user['name'];
+				
 							
 				
-				require_once('Zend/Session.php');
+				/*require_once('Zend/Session.php');
  
 				$remember = isset($_POST['remember']) && $_POST['remember'];
 				$seconds  = 60 * 60 * 24 * 7; // 7 days
@@ -45,12 +47,13 @@ class Admin_IndexController extends Zend_Controller_Action
 				else 
 				{
 				Zend_Session::ForgetMe();
-				}
+				}*/
  
 				
 				$session=new Zend_Session_NameSpace();
 				$session->id=$id;
 				$session->email=$un;
+				$session->name=$name;
 							
 				
 				$this->_helper->redirector('home','leave');			

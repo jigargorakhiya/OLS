@@ -11,32 +11,23 @@
 
 <div id="header">
 <div id="logo"><img src="../images/header_images/logo.jpg" /></div>
-<div id="logout">Welcome <?php echo $this->username;?> <b>|</b> <a href="<?php echo $this->url(array('controller'=>'index','action'=>'logout'))?>">Logout</a></div>
+<div id="logout">Welcome <?php echo $this->name;?><b>|</b> <a href="<?php echo $this->url(array('controller'=>'index','action'=>'logout'))?>">Logout</a></div>
 </div>
 
 <div id="main_menu"><div id="menu">
 <ul id="nav" class="dropdown dropdown-horizontal">
-				<li><a class="active-link" href="<?php echo $this->url(array('controller'=>'leave','action'=>'home'))?>">Admin</a></li>
-				<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewemp'))?>">Employee</a>
+				<li><a class="active-link" href="<?php echo $this->url(array('controller'=>'leave','action'=>'home'))?>">Employee</a></li>
+				<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewprofile'))?>">Profile</a>
 					<ul>
-						<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewemp'))?>">View Employees</a></li>
-						<li><a href="<?php echo $this->url(array('controller'=>'leave','action'=>'employee'))?>">Add Employees</a></li>
+						<li><a class="" href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewprofile'))?>">View Profile</a></li>
+						<li><a href="<?php echo $this->url(array('controller'=>'leave','action'=>'editprofile'))?>">Edit Profile</a></li>
 					</ul>
 				</li>
-                 <li><a class="" href="#">Leave</a>
+                 <li><a class="" href="<?php echo $this->url(array('contoller'=>'leave','action'=>'applyleave'))?>">Leave</a>
                  <ul>
-						<li><a class="" href="#">Sub Menu 1</a>
-								<ul><li><a class="" href="#">Sub Menu 1</a></li>
-									<li><a class="" href="#">Sub Menu 1</a></li>
-									<li><a class="" href="#">Sub Menu 1</a></li>
-								</ul>
-						</li>
-							
-					<li><a class="" href="#">Sub Menu 2</a></li>
-						<li><a class="" href="#">Sub Menu 3</a></li>
-                 
-                 </li>
-				 </ul>
+						<li><a class="" href="#">Apply Leave</a></li>					
+					                 
+                 </ul>
 			    <li><a class="" href="services.html">Time</a></li>
 				<li><a class="" href="#">Benefits</a></li>
 				<li><a class="" href="#">Recruitment</a></li>

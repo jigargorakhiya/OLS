@@ -1,0 +1,163 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "trebuchet ms",trebuchet,verdana,arial,helvetica,sans-serif;
+}
+html {
+	height: 100%;
+}
+body {
+	text-align: center;
+	background-color: #212121;
+	height: 100%;
+	width:  100%;
+}
+.a {
+	font-family: "trebuchet ms",trebuchet,verdana,arial,helvetica,sans-serif;
+	font-size:12px;
+	color:#ff5400;
+	}
+	.a:hover {
+	font-family: "trebuchet ms",trebuchet,verdana,arial,helvetica,sans-serif;
+	font-size:12px;
+	color:#181818;
+	}
+.new_button_flat {
+	background-color:#ffffff;
+	position:relative;
+	border:0px;
+	top:0px;
+	left:90px;
+	height:21px;
+	width:90px;
+	padding-bottom:5px;
+	font-weight:bold;
+	font-size: 14px;
+}
+
+.login_button {
+	position:relative;		
+	background-color:transparent;
+	border:0px;
+	height:32px;
+	width:90px;
+	padding-bottom:2px;
+	font-family:tahoma;
+	font-size:12px;
+	background-image:url(../images/login_images/login.gif);
+	background-repeat: no-repeat;
+	/*login.png*/
+}
+
+.new_button {
+	background-color:;
+	border:0px;
+	height:21px;
+	width:90px;
+	padding-bottom:2px;
+	font-family:arial;
+	font-size:12px;
+	background-image:url(../images/login_images/bouton.jpg);
+	background-repeat: no-repeat;
+}
+
+.new_button_large {
+        background-color:;
+        border:0px;
+        height:21px;
+        width:90px;
+        padding-bottom:2px;
+        font-family:arial;
+        font-size:12px;
+        background-image:url(../images/login_images/boutton_large.png);
+        background-repeat: no-repeat;
+}
+
+.cute_button_large {
+        background-color:transparent;
+        border:0px;
+        height:32px;
+        width:170px;
+        padding-bottom:2px;
+        font-family:tahoma;
+        font-size:11px;
+		font-weight:bold;
+        background-image:url(../images/login_images/btn-long.png);
+        background-repeat: no-repeat;
+}
+
+
+.new_button:hover {
+        background-image:url(../images/login_images/boutton_over.png);
+        color:#dddddd;
+}
+
+.new_button_large:hover {
+        background-image:url(../images/login_images/bouton_large_over.png);
+        color:#dddddd;
+}
+
+.labels {
+	width:70px;
+	color:#747474;
+	font-size: 12px;
+	font-weight:bold;
+}
+
+.login_body {
+	width: 379px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#me_box {
+	position: absolute;
+	top: -15px;
+	width: 285px;
+	text-align: center;
+	font-size: 14px;
+}
+
+#error_box {
+	list-style-type: none;
+	color: #900;
+}
+
+#error_box li {
+	color: #800;
+	font-weight: bold;
+}
+
+#message_box {
+	list-style-type: none;
+	color: #090;
+}
+
+#message_box li {
+	color: #080;
+	font-weight: bold;
+}
+
+.login_form {
+	width: 379px;
+	height: 243px;
+	position: relative;
+	top: 160px;
+	left:10px;
+}
+
+.activity {
+}
+
+.usertext {
+	border: 1px solid #000;
+	background-color: #ffffff;
+	color: #000;
+	width: 170px;
+	height: 20px;
+	font-size: 12px;
+	position: relative;
+	padding: 0 5px;
+	border:1px solid #a9a9a9;
+}
