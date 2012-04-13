@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<!-- Meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<!-- End of Meta -->
+		<!-- Page title -->
+		<title>Search Employee</title>		<!-- End of Page title -->
+		<!-- Libraries -->
+		<?php $url="http://localhost/lsm/public/admin";?>
+		<link type="text/css" href="<?php echo $url;?>/css/layout.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/easyTooltip.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+		<script type="text/javascript" src="js/hoverIntent.js"></script>
+		<script type="text/javascript" src="js/superfish.js"></script>
+		<script type="text/javascript" src="js/custom.js"></script>
+		<!-- End of Libraries -->
+        <script type="text/javascript">
+    function confirmDelete()
+    {
+     return confirm("Are you sure you wish to delete this record?");
+    }
+   function confirmcancel()
+   {
+    return confirm("Are you sure you wish to cancel this booking?");
+   }
+</script>	
+	</head>
+<body>
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'home'),null,true)?>">Admin</a></li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'viewemp'),null,true)?>">Employee</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'viewemp'))?>">View Employee</a></li>
+						<li><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'employee'),null,true)?>">Add Employee</a></li>
+					</ul>
+				</li>
+                 <li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'ld','action'=>'viewleave'),null,true)?>">Leave</a>
+                 <ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'ld','action'=>'vieweave'),null,true)?>">View Leave</a></li>					
+					                 
+                 </ul>
+			    <li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'viewsalary'),null,true)?>">Salary</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'viewsalary'),null,true)?>">View Salary</a></li>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'createsalary'),null,true)?>">Create Salary</a></li>
+					</ul>
+				</li>
+				        
+               
+			</ul></div></div>  
+		<!-- Container -->
+<div id="container">
+		<!-- Header -->
+		
+  <div id="header">
+				<!-- Top -->
+    
+				<!-- End of Top-->
+<!-- The navigation bar -->
+
+
+		<!-- End of Header -->
+		<!-- Background wrapper -->
+    	<div id="bgwrap">
+     		<!-- Main Content -->
+			<div id="content">
+				<div id="main">				 
+				  <div class="pad20">
+
+                  <div id="tab">
+				  
+          <table class="fullwidth" cellpadding="0" cellspacing="0" border="1">
+										<thead>
+                                        <tr><td colspan="2">&nbsp;<b>Salary Detail</b></font></td></tr>
+										</thead>
+                                        <thead>
+                                        <tr>
+                                        <td>Emp_Id</td>
+                                        <td align="center">Name</td>
+                                        <td align="center">Designation</td>
+                                        <td align="center">Salary</td>
+										<td align="center">Date of Salary</td>
+                                        <td>View</td><td>Edit</td><td>Delete</td></tr></thead>
+										<tbody>
+											<?php 
+											
+
+$i=1;
+
+foreach($this->resultviews as $resultRow)
+				{		
+					
+				 $id=$resultRow['user_id'];				 
+				 $name=$resultRow['name'];
+				 $desg=$resultRow['designation'];
+				 $salary=$resultRow['basicsalary'];
+				 $salarydate=$resultRow['salarydate'];				
+				 if($desg==0)
+					$desg="Employee";
+				else
+					$desg="Manager";
+if($i%2 !== 0)
+{
+?>
+<tr class="odd" height="40">
+ <td width="75px" align="left"><?php echo $id; ?></td>
+ <td width="150px" align="left"><?php echo $name; ?></td>
+  <td width="150px" align="left"><?php echo $desg; ?></td>
+ <td width="150px" align="left"><?php echo $salary; ?></td>
+ <td width="150px" align="left"><?php echo $salarydate; ?></td>
+ 
+<td><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'salary','salary_id'=>$resultRow['salary_id']),null,true)?>" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-search"></span></a></td>
+<td><a href="#" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-search"></span></a></td>
+<td><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'delete','salary_id'=>$resultRow['salary_id']),null,true)?>" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-trash" onclick="return confirmDelete();"></span></a></td>
+ </tr>
+<?php }
+else { ?>
+<tr class="colo1" height="40">
+ <td width="75px" align="left"><?php echo $id; ?></td>
+  <td width="150px" align="left"><?php echo $name; ?></td>
+    <td width="150px" align="left"><?php echo $desg; ?></td>
+ <td width="150px" align="left"><?php echo $salary; ?></td>
+ <td width="150px" align="left"><?php echo $salarydate; ?></td>
+  <td><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'salary','salary_id'=>$resultRow['salary_id']),null,true)?>" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-search"></span></a></td>
+<td><a href="#" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-search"></span></a></td>
+<td><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'delete','salary_id'=>$resultRow['salary_id']),null,true)?>" class="ui-state-default ui-corner-all" title=".ui-icon-search">
+<span class="ui-icon ui-icon-trash" onclick="return confirmDelete();"></span></a></td>
+ </tr>
+<?php
+}
+$i++;
+}
+
+?>
+</td>
+</tr>
+</tbody>
+</table>
+<a href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'viewsalary'),null,true)?>">Back</a>
+                  </div></div></div></div>
+			
+</body>
+</html>

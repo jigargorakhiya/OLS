@@ -15,6 +15,16 @@ class Admin_IndexController extends Zend_Controller_Action
 	public function loginAction()
 	{
 		$this->_helper->layout->disableLayout();
+		
+		$ses_id=session_id();
+		if(empty($ses_id))
+		{
+			$session=new Zend_Session_Namespace();
+			if(isset($session->id))
+			{
+				$this->_helper->redirector('home','leave');						
+			}
+		}
 	}
 	public function loginpostAction()
 	{	
@@ -25,7 +35,7 @@ class Admin_IndexController extends Zend_Controller_Action
 			$un=$this->getRequest()->getPost('user');
 			$pwd=$this->getRequest()->getPost('pass');
 			 
-			$check=$data->checkUser($un,$pwd);
+			 $check=$data->checkUser($un,$pwd);
 			if($check==true)
 			{
 				$uid=new Model_DbTable_Login();

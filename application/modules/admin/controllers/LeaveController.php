@@ -3,18 +3,22 @@ include_once(APPLICATION_PATH.'/modules/admin/models/DbTable/Login.php');
 
 class Admin_LeaveController extends Zend_Controller_Action
 {
+	public function init()
+	{
+		
+	}
 	public function homeAction()
 	{
-			$session=new Zend_Session_Namespace();
+		$session=new Zend_Session_Namespace();
 			if(isset($session->id))
 			{
-				$this->view->name="<b>".$session->name."</b>";	
-					
+				$this->view->name="<b>".$session->name."</b>";						
 			}
 			else
 			{
 				$this->_helper->redirector('login','index');
 			}
+	
 	}
 	
 	public function employeeAction()
@@ -212,9 +216,50 @@ class Admin_LeaveController extends Zend_Controller_Action
 			}	
 	}
 	
-	public function searchAction()
+	public function deleteAction()
 	{
+		$session=new Zend_Session_Namespace();
+		if(isset($session->id))
+		{
+			$this->view->name="<b>".$session->name."</b>";
+			
+			$eid=$this->_request->getParam('id');
+			
+			$data= new Model_DbTable_Login();
+			$data->deleteEmployee($eid);
+			$this->_helper->redirector('viewemp','leave');
+			exit;
+		}
+		else
+		{
+			$this->_helper->redirector('login','index');
+		}
 		
+	}
+	
+	public function searchempAction()
+	{
+			$session=new Zend_Session_Namespace();
+			if(isset($session->id))
+			{
+				$this->view->name="<b>".$session->name."</b>";
+				
+				$name=$this->getRequest()->getPost('name');
+				
+				
+				$data = new Model_DbTable_Login();
+				
+				$search=$data->searchEmp($name);
+				
+				$this->view->resultviews=$search;
+				
+				$this->render('searchemp');
+				
+			}
+			else
+			{
+				$this->_helper->redirector('login','index');
+			}
 	}
 	
 	

@@ -24,24 +24,19 @@ class Emp_LeaveController extends Zend_Controller_Action
 			{				
 				$this->view->name="<b>".$session->name."</b>";
 				
-				$data= new Model_DbTable_Login();
-				
-				
-				$EmpData=$data->viewEmp();
-				
+				$data= new Model_DbTable_Login();				
+				$EmpData=$data->viewEmp();			
 				$this->view->resultviews = $EmpData;
-				$this->render('viewprofile');
-					
+				$this->render('viewprofile');		
 			}
 			else
 			{
 				$this->_helper->redirector('login','index');
-			}	
-			 
-		
+			}		
 	}
 	
 	
+
 	
 	public function updateprofileAction()
 	{
@@ -49,7 +44,7 @@ class Emp_LeaveController extends Zend_Controller_Action
 			if(isset($session->id))
 			{
 				$this->view->name="<b>".$session->name."</b>";	
-				$this->render('editprofile');
+				//$this->render('editprofile');
 				
 				$data= new Model_DbTable_Login();
 				if($this->getRequest()->isPost())
@@ -86,7 +81,7 @@ class Emp_LeaveController extends Zend_Controller_Action
 					
 					$ins=$data->updateData($name,$bdate,$phoneno,$add,$qf,$jdate,$edate,$gn,$ms,$desg,$email,$pwd,$pan,$status);				
 					
-					$this->_helper->redirector('viewprofile', 'Leave');
+					$this->_helper->redirector('viewprofile', 'leave');
 					exit;				
 					
 				}
@@ -142,7 +137,11 @@ class Emp_LeaveController extends Zend_Controller_Action
 	
 	public function changepassAction()
 	{
-		
+		$session=new Zend_Session_Namespace();
+		if(isset($session->id))
+		{
+			$this->view->name="<b>".$session->name."</b>";
+		}
 	}
 	
 	public function changepasspostAction()
@@ -155,24 +154,22 @@ class Emp_LeaveController extends Zend_Controller_Action
 			
 			$op=$this->getRequest()->getPost('old_pass');
 			$np=$this->getRequest()->getPost('pass');
-			$cp=$this->getRequest()->getPost('cp');
+			$cp=$this->getRequest()->getPost('cpass');
+			
 			
 			if($np==$cp)
 			{
-				$chpass=$data->changePassword($op);	
-				$this->view->success=
+				$chpass=$data->changePassword($op,$np);	
+				$this->view->success="Password Successfully Chagned.";
+				$this->_helper->redirector('changepass','leave');				
+				
 			}
 			
 			else
 			{
 				$this->view->newpassword="New Password and Confirm password do not match";
 				$this->render('changepass');
-			}
-
-		
-			
-			
-			
+			}		
 		}
 		else
 		{
@@ -180,10 +177,13 @@ class Emp_LeaveController extends Zend_Controller_Action
 		}
 	}
 	
+	
+	
 	public function searchAction()
 	{
 		
 	}
+	
 	
 	
 	public function locationAction()

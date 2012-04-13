@@ -1,5 +1,5 @@
 <?php
-include_once(APPLICATION_PATH.'/modules/admin/models/DbTable/Login.php');
+include_once(APPLICATION_PATH.'/modules/emp/models/DbTable/Login.php');
 
 class Emp_IndexController extends Zend_Controller_Action
 {
@@ -15,7 +15,17 @@ class Emp_IndexController extends Zend_Controller_Action
     }
 	public function loginAction()
 	{
+	
 		$this->_helper->layout->disableLayout();
+		$ses_id=session_id();
+		if(empty($ses_id))
+		{
+			$session=new Zend_Session_Namespace();
+			if(isset($session->id))
+			{
+				$this->_helper->redirector('home','leave');						
+			}
+		}
 	}
 	public function loginpostAction()
 	{	

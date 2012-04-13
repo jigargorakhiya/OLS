@@ -45,6 +45,28 @@
 
 <body>
 
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'home'),null,true)?>">Employee</a></li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">Profile</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">View Profile</a></li>
+						<li><a href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'editprofile'),null,true)?>">Edit Profile</a></li>
+					</ul>
+				</li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">Leave</a>
+                 <ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">View Leave</a></li>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'applyleave'),null,true)?>">Apply Leave</a></li>					                 						
+                 </ul>
+				 <li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">Salary</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">View Salary</a></li>
+					</ul> 
+				</li>
+               
+			</ul></div></div>  
+		
 		<!-- Container -->
 
 <div id="container">
@@ -220,6 +242,7 @@ if(isset($_POST['SBMT']))
  ?>
 
   <div class="bodytext"><center> <font color="red"><?php echo $this->oldpass;?></font> </center> </div>
+  <div class="bodytext"><center> <font color="red"><?php echo $this->newpassword;?></font> </center> </div>
 
  <?php
 
@@ -239,7 +262,7 @@ if(isset($_POST['SBMT']))
 
 			<!-- Sidebar -->
 
-			<?php include("sidebar.php");?>
+	
 
 			<!-- End of Sidebar -->
 
@@ -257,7 +280,7 @@ if(isset($_POST['SBMT']))
 
 	<!-- Footer -->
 
-	<?php include("admin_footer.php");?>
+	
 
 	<!-- End of Footer -->
 

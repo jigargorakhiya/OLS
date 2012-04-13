@@ -1,0 +1,146 @@
+<html>
+
+<head>
+		<title>Apply Leave</title>
+		<link rel="stylesheet" href="../css/layout.css" type="text/css">
+		<link href="../css/main_style.css" rel="stylesheet" type="text/css" >
+		<link href="../css/styles.css" rel="stylesheet" type="text/css" >
+		
+		<script type="text/javascript">
+
+  function checkForm(form)
+{
+	  if(form.reason.value == "") {
+      alert("Error: Reason cannot be blank!");
+      form.reason.focus();
+      return false;
+    }
+    
+}
+	</script>
+</head>
+
+<body>		
+
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'home'),null,true)?>">Employee</a></li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">Profile</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">View Profile</a></li>
+						<li><a href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'editprofile'),null,true)?>">Edit Profile</a></li>
+					</ul>
+				</li>
+                  <li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">Leave</a>
+                 <ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">View Leave</a></li>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'applyleave'),null,true)?>">Apply Leave</a></li>					                 						
+                 </ul>
+				 <li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">Salary</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">View Salary</a></li>
+					</ul> 
+				</li>
+               
+			</ul></div></div>  
+		  
+					
+<div id="container">
+
+		
+
+			<!-- Header -->
+
+  <div id="header">
+
+				
+
+				<!-- Top -->
+
+    
+
+				<!-- End of Top-->
+
+			
+
+<!-- The navigation bar -->
+
+			
+
+		<!-- End of Header -->
+
+			
+						
+		<!-- Background wrapper -->
+					
+		<div id="bgwrap">
+
+		
+
+			<!-- Main Content -->
+
+			<div id="content">
+						
+                 <div id="main">				 
+						
+				  <div class="pad20">			
+					
+										
+				  <form name="addEmp" action="<?php echo $this->url(array('controller'=>'ld','action'=>'applyleavepost'))?>" method="post" onSubmit='return checkForm(this)'>    
+
+				  <fieldset>
+					<legend>Apply Leave</legend>           
+						<table>
+							<tr>
+							<td><p><label>From:</label></td>
+								<td>
+									<Select name="fday">
+									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
+									</select>
+									/
+									<Select name="fmonth">
+									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
+									</select>
+									/
+									<select name="fyear">
+									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
+									 </select>						
+								</td>
+								<td><label>To:</label></td>
+								<td>
+									<Select name="tday">
+								   	<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
+									</select>
+									/
+									<Select name="tmonth">
+									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
+									</select>
+									/
+									<select name="tyear">
+									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
+									 </select>						
+								</td>
+							
+							</tr>											
+								<tr>
+									<td><label>Reason:</label></td>
+									<td><textarea name="reason" rows=2 size="30"></textarea></td>
+								</tr>
+								
+														
+						<tr>
+							
+								<td><input type="submit" value="Submit" class="button" /></td>
+								
+						</tr>
+						</table>
+						
+            </fieldset>
+			<?php echo $this->email;?>
+			
+		
+         
+		  </div></div></div></div></div></div>
+
+</body>
+</html>

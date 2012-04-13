@@ -180,7 +180,7 @@ label {
 
 
 
-a.button {
+a.button,button {
 
 	position:relative;
 
@@ -198,7 +198,7 @@ a.button {
 
 
 
-a.button span {
+a.button span,buton {
 
 	float:left;
 

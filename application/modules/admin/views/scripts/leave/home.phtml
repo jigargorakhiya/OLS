@@ -1,11 +1,35 @@
 <html>
 <head>
 	<title>Mind Zone HR Admin</title>
-	<link rel="stylesheet" href="../css/core.css" type="text/css">
-	<link rel="stylesheet" href="../css/skin_clean.css" type="text/css">
+	<?php $url="http://localhost/lsm/public/admin";?>
+	<link rel="stylesheet" href="<?php echo $url;?>/css/core.css" type="text/css">
+	<link rel="stylesheet" href="<?php echo $url;?>/css/skin_clean.css" type="text/css">
 	<script type="text/javascript" src="js/easyTooltip.js"></script>
 </head>
 <body>
+
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'home'),null,true)?>">Admin</a></li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'viewemp'),null,true)?>">Employee</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'viewemp'))?>">View Employee</a></li>
+						<li><a href="<?php echo $this->url(array('module'=>'admin','controller'=>'leave','action'=>'employee'),null,true)?>">Add Employee</a></li>
+					</ul>
+				</li>
+                 <li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'ld','action'=>'viewleave'),null,true)?>">Leave</a>
+                 <ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'ld','action'=>'viewleave'),null,true)?>">View Leave</a></li>					
+					                 
+                 </ul>
+			    <li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'viewsalary'),null,true)?>">Salary</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'viewsalary'),null,true)?>">View Salary</a></li>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'admin','controller'=>'adminsalary','action'=>'createsalary'),null,true)?>">Create Salary</a></li>
+					</ul>
+				</li>
+               
+			</ul></div></div>  
 
 		<div id="content">
 
@@ -49,11 +73,11 @@
 
 						  <li>
 
-							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'employee'))?>" title="Manage employees and accounts" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'viewemp'))?>" title="View Employees" class="tooltip">
 
 								  <img src="../images/assets_images/icons/16_48x48.png" alt="" />
 
-								  <span>Employees Details</span>
+								  <span>View Employees</span>
 
 							  </a>
 
@@ -64,24 +88,11 @@
 
                            <li>
 
-							  <a href="email_setting.php" title="Update Email Setting" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'leave','action'=>'employee'))?>" title="Add Employees" class="tooltip">
 
-								  <img src="../images/assets_images/icons/25_48x48.png" alt="" />
+								  <img src="../images/assets_images/icons/16_48x48.png" alt="" />
 
-								  <span>Email Setting</span>
-
-							  </a>
-
-						  </li>
-
-
-                          <li>
-
-							  <a href="terms_condition.php" title="Add Terms And Conditions" class="tooltip">
-
-								  <img src="../images/assets_images/icons/19_48x48.png" alt="" />
-
-								  <span>Terms And Conditions</span>
+								  <span>Add Employees</span>
 
 							  </a>
 
@@ -90,44 +101,7 @@
 
                           <li>
 
-							  <a href="admin_chpass.php" title="Change Your Password" class="tooltip">
-
-								  <img src="../images/assets_images/icons/info_48.png" alt="" />
-
-								  <span>Change Password</span>
-
-							  </a>
-
-						  </li>
-                          
-                          <li>
-
-							  <a href="admin_change_title.php" title="Change Admin Page Title" class="tooltip">
-
-								  <img  height="50" width="70" src="../images/assets_images/icons/change.png" alt="" />
-
-								  <span>Change Page Title</span>
-
-							  </a>
-
-						  </li><br />
-
-
-						  <li>
-
-							  <a href="view_client_detail.php" title="View Cleints Details" class="tooltip">
-
-								  <img src="../images/assets_images/icons/21_48x48.png" alt="" />
-
-								  <span>View Clients Detail</span>
-
-							  </a>
-
-						  </li>
-                          
-                          <li>
-
-							  <a href="view_blog_detail.php" title="View Leave Details" class="tooltip">
+							 <a href="<?php echo $this->url(array('controller'=>'ld','action'=>'viewleave'))?>" title="View Leave Details" class="tooltip">
 
 								  <img src="../images/assets_images/icons/21_48x48.png" alt="" />
 
@@ -136,57 +110,31 @@
 							  </a>
 
 						  </li>
-                          
+
+
                           <li>
 
-							  <a href="view_info_detail.php" title="View Information Details" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'adminsalary','action'=>'viewsalary'))?>" title="View Salary Details" class="tooltip">
 
 								  <img src="../images/assets_images/icons/21_48x48.png" alt="" />
 
-								  <span>View Info Detail</span>
-
-							  </a>
-
-						  </li>
-
-
-						  <li>
-
-							  <a href="view_service_detail.php" title="View Service Details" class="tooltip">
-
-								  <img src="../images/assets_images/icons/21_48x48.png" alt="" />
-
-								  <span>View Services Details</span>
+								  <span>View Salary Details</span>
 
 							  </a>
 
 						  </li>
                           
-                           <li>
+                               <li>
 
-							  <a href="view_cat_detail.php" title="View Category Details" class="tooltip">
+							  <a href="<?php echo $this->url(array('controller'=>'adminsalary','action'=>'createsalary'))?>" title="Create Salary Slip" class="tooltip">
 
 								  <img src="../images/assets_images/icons/21_48x48.png" alt="" />
 
-								  <span>View Category Details</span>
+								  <span>Create Salary Slip</span>
 
 							  </a>
 
 						  </li>
-
-
-					
-						 <!-- <li>
-
-							  <a href="#" title="Lorem ipsum" class="tooltip">
-
-								  <img src="../images/assets_images/icons/26_48x48.png" alt="" />
-
-								  <span>Latest comments</span>
-
-							  </a>
-
-						  </li>-->
 
 					  </ul>
 

@@ -78,13 +78,14 @@ label {
 
 
 
-input.button, a.button {
+input.button, a.button,button {
 
 	background:url('../images/assets_images/rep1.png') 0 0 repeat-x;
 
 	border:1px solid #000;
 
 	color:#ccc!important;
+	
 
 }
 

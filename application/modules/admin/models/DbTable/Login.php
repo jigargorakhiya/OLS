@@ -9,10 +9,13 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 		
 		$res=$this->fetchRow(array('email="'.$un.'"','password="'.$pwd.'"'));
 		
-		if($pwd==$res['password'])		
+		if($pwd==$res['password'] && $res['isAdmin']==1)		
 			return true;
 		else
-			return false;		
+			return false;
+
+			
+			
 	}
 	
 	public function getSessionDetails($un,$pwd)
@@ -112,4 +115,32 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 		echo "<br/>".$e;exit;
 	 }	 
 	}
+	
+	public function deleteEmployee($eid)
+	{
+		$session = new Zend_Session_Namespace(); 
+		if (isset($session->id)) 
+		{
+			$db = Zend_Db_Table::getDefaultAdapter();
+			$where = $db->quoteInto('user_id = ?', (int)$eid);
+			$db->delete('login', $where);
+		}
+	}
+	
+	public function searchEmp($name)
+	{
+		$session = new Zend_Session_Namespace(); 
+		if (isset($session->id)) 
+		{
+			
+			$query= $this->select()
+						  ->where('name LIKE ?', $name.'%');
+			
+			$rows = $this->fetchAll($query);			
+			return $rows;
+		}			
+			
+		
+	}
+	
 }

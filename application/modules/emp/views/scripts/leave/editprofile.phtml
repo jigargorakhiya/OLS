@@ -2,9 +2,9 @@
 
 <head>
 		<title>Edit Profile</title>
-		<link rel="stylesheet" href="../css/layout.css" type="text/css">
-		<link href="../css/main_style.css" rel="stylesheet" type="text/css" >
-		<link href="../css/styles.css" rel="stylesheet" type="text/css" >
+		<link rel="stylesheet" href="../css/layout.css" type="text/css" />
+		<link href="../css/main_style.css" rel="stylesheet" type="text/css" />
+		<link href="../css/styles.css" rel="stylesheet" type="text/css" />
 		
 <script type="text/javascript">
 
@@ -126,6 +126,29 @@ foreach($this->resultviews as $resultRow)
 ?>
 <body>		
 					
+<div id="main_menu"><div id="menu">
+<ul id="nav" class="dropdown dropdown-horizontal">
+				<li><a class="active-link" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'home'),null,true)?>">Employee</a></li>
+				<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">Profile</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'viewprofile'),null,true)?>">View Profile</a></li>
+						<li><a href="<?php echo $this->url(array('module'=>'emp','controller'=>'leave','action'=>'editprofile'),null,true)?>">Edit Profile</a></li>
+					</ul>
+				</li>
+                  <li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">Leave</a>
+                 <ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'viewleave'),null,true)?>">View Leave</a></li>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'ld','action'=>'applyleave'),null,true)?>">Apply Leave</a></li>					                 						
+                 </ul>
+				 <li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">Salary</a>
+					<ul>
+						<li><a class="" href="<?php echo $this->url(array('module'=>'emp','controller'=>'empsalary','action'=>'viewsalary'),null,true)?>">View Salary</a></li>
+					</ul> 
+				</li>
+               
+			</ul></div></div>  
+		  
+			
 <div id="container">
 
 		
@@ -188,7 +211,7 @@ foreach($this->resultviews as $resultRow)
 								<td><input type="text" id="" name="add"  value="<?php echo $add;?>" class=""  /></p></td>
 								
 								<td><p><label>Qualification:</label></td>
-								<td><input type="text"  name="qf"  value="<?php echo $qf;?>" class=""  /></p></td>
+								<td><input type="text"  name="qf"  value="<?php echo $qf;?>" class="" readonly="readonly" /></p></td>
 								
 								<td><p><label>Password:</label></td>
 								<td><input type="password" id='pwd' name="pwd"  value="<?php echo $pwd;?>" class=""  /></p></td>																
@@ -210,29 +233,29 @@ foreach($this->resultviews as $resultRow)
 								</td>
 								<td><label>Joining Date:</label></td>
 								    <td>
-									<Select name="jday">
+									<Select name="jday" disabled="disabled">
 									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
 									</select>
 									/
-									<Select name="jmonth">
+									<Select name="jmonth" disabled="disabled">
 									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
 									</select>
 									/
-									<select name="jyear">
+									<select name="jyear" disabled="disabled">
 									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
 									 </select>						
 								</td>
 								<td><label>Ending Date:</label></td>
 								    <td>
-									<Select name="eday">
+									<Select name="eday" disabled="disabled">
 									<?php for($i=1;$i<=30;$i++) echo "<option value=$i>$i</option>";?>									
 									</select>
 									/
-									<Select name="emonth">
+									<Select name="emonth" disabled="disabled">
 									<?php for($i=1;$i<=12;$i++) echo "<option value=$i>$i</option>";?>
 									</select>
 									/
-									<select name="eyear">
+									<select name="eyear" disabled="disabled">
 									<?php for($i=1980;$i<=2020;$i++) echo "<option value=$i>$i</option>";?>
 									 </select>						
 								</td> 
@@ -241,7 +264,7 @@ foreach($this->resultviews as $resultRow)
 							
 							<tr>
 								<td><p><label>Gender:</label></td>
-								<td><select name="gender">
+								<td><select name="gender" readonly="readonly">
 									<option value="0">Male</option>
 									<option value="1">Female</option>
 								</td>					
@@ -254,7 +277,7 @@ foreach($this->resultviews as $resultRow)
 								</td>
 								
 								<td><p><label>Designation:</label></td>
-								<td><select name="desig">
+								<td><select name="desig" disabled="disabled">
 									<option value="0">Employee</option>
 									<option value="1">Manager</option>
 								</td>
@@ -263,7 +286,7 @@ foreach($this->resultviews as $resultRow)
 							
 							<tr>
 								<td><p><label>Status:</label></td>
-								<td><select name="status">
+								<td><select name="status" disabled="disabled">
 									<option value="0">Active</option>
 									<option value="1">Deactive</option>
 								</td>
@@ -280,7 +303,7 @@ foreach($this->resultviews as $resultRow)
 						
             </fieldset>
 			
-		
+		 
         <?php }?>
 		  </div></div></div></div></div></div>
 

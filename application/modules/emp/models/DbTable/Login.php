@@ -9,7 +9,7 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 		
 		$res=$this->fetchRow(array('email="'.$un.'"','password="'.$pwd.'"'));
 		
-		if($pwd==$res['password'])		
+		if($pwd==$res['password'] && $res['isAdmin']==0)		
 			return true;
 		else
 			return false;		
@@ -24,7 +24,6 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 	
 	public function viewEmp()
 	{	
-	
 		$session = new Zend_Session_Namespace(); 
 		if (isset($session->id)) 
 		{	
@@ -106,10 +105,10 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 			
 			if($op==$pass)	{
 			
-			 $data= array('password'=>$pass);
+			 $data= array('password'=>$np);
 					try{
 					
-					$result=$this->update($data,'user_id='.(int)$id);
+					$result=$this->update($data,'user_id='.(int)$id);					
 				}
 				
 				catch (exception $e) {
@@ -117,9 +116,6 @@ class Model_DbTable_Login extends Zend_Db_Table_Abstract
 				}
 				
 			}
-				
-			
-			
 		}
 	}
 }
